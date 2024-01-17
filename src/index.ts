@@ -1,9 +1,9 @@
-import { generatorHandler } from '@prisma/generator-helper';
-import { createTransformer } from './generator/transformDMMF';
 import * as fs from 'fs';
 import * as path from 'path';
+import { generatorHandler } from '@prisma/generator-helper';
 import { parseEnvValue } from '@prisma/sdk';
 import prettier from 'prettier';
+import { createTransformer } from './generator/transformDMMF';
 
 generatorHandler({
   onManifest() {
@@ -35,9 +35,10 @@ generatorHandler({
             const fsPromises = [];
             fsPromises.push(
               fs.promises.writeFile(
-                path.join(outputDir, n.name + '.ts'),
+                path.join(outputDir, `${n.name}.ts`),
                 prettier.format(n.rawString, {
                   parser: 'babel-ts',
+                  singleQuote: true,
                 }),
                 {
                   encoding: 'utf-8',
@@ -55,9 +56,10 @@ generatorHandler({
             if (n.inputRawString) {
               fsPromises.push(
                 fs.promises.writeFile(
-                  path.join(outputDir, n.name + 'Input.ts'),
+                  path.join(outputDir, `${n.name}Input.ts`),
                   prettier.format(n.inputRawString, {
                     parser: 'babel-ts',
+                    singleQuote: true,
                   }),
                   {
                     encoding: 'utf-8',

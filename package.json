@@ -3,9 +3,7 @@
   "version": "2.1.0",
   "main": "dist/index.js",
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "description": "Typebox generator for prisma schema",
   "author": {
     "name": "Ade Yahya Prasetyo@gmail.com",
